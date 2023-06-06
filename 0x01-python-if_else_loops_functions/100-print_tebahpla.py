@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-print("".join(chr(i) if i % 2 == 0 else chr(i).upper() for i in range(122, 96, -1)))
+print("".join("{}{}".format(chr(i), chr(i).upper() if i % 2 else "") for i in range(122, 96, -1)))
