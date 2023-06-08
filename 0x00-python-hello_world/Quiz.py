@@ -1,4 +1,4 @@
-if 12 == 48/4:
-    print("Holberton")
-else:
-    print("School")
+def my_function():
+     print("In my function")
+ 
+my_function
