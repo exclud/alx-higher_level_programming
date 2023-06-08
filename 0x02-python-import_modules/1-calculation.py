@@ -12,10 +12,10 @@ def main():
     div_result = div(a, b)
 
 
-    print(f'Addition: {a}+ {b} = {add_result}')
-    print(f'Subtraction: {a} - {b} = {sub_result}')
-    print(f'Multiplication: {a} * {b} = {mult_result}')
-    print(f'Division: {a} / {b} = {div_result}')
+    print(f'{a} + {b} = {add_result}')
+    print(f'{a} - {b} = {sub_result}')
+    print(f'{a} * {b} = {mult_result}')
+    print(f'{a} / {b} = {div_result}')
 
 
 if __name__ == "__main__":
