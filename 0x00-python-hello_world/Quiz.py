@@ -1,4 +1,3 @@
-def my_function():
-     print("In my function")
- 
-my_function
+a = [1,2,3,4]
+
+print (a[-1])
