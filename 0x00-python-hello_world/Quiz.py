@@ -1,3 +1,5 @@
-a = [1,2,3,4]
+for i in [1, 3, 4, 2]:
+    print(i, end=" ")
+#print(a.get('id'))
 
-print (a[-1])
+#print(a.get('friends')[-1].get("name"))
