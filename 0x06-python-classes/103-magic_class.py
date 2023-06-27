@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 import math
+"""
+This class represents a square.
+"""
 
 
 class MagicClass:

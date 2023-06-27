@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""A Class Square Defination"""
+
+
 class Square:
     """
     This class represents a square.
@@ -81,7 +84,7 @@ class Square:
 
     def __gt__(self, other):
         """
-        Checks if the area of the current square is greater than the area of the other square.
+        Checks if area of current square > than area of the other square.
 
         Args:
             other (Square): The other square to compare.
@@ -93,7 +96,7 @@ class Square:
 
     def __ge__(self, other):
         """
-        Checks if the area of the current square is greater than or equal to the area of the other square.
+        Checks if area of current square is >= to area of the other square.
 
         Args:
             other (Square): The other square to compare.
@@ -105,7 +108,7 @@ class Square:
 
     def __lt__(self, other):
         """
-        Checks if the area of the current square is less than the area of the other square.
+        Checks if area of current square <area of the other square.
 
         Args:
             other (Square): The other square to compare.
@@ -117,7 +120,7 @@ class Square:
 
     def __le__(self, other):
         """
-        Checks if the area of the current square is less than or equal to the area of the other square.
+        Checks if area of current square is <= area of the other square.
 
         Args:
             other (Square): The other square to compare.
