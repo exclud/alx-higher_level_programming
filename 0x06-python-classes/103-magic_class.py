@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-import math
 """
 Defination of Class MagicClass.
 """
+
+import math
 
 
 class MagicClass:
