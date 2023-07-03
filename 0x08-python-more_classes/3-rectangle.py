@@ -102,11 +102,11 @@ class Rectangle:
         Returns:
             str: String rep using '#'
         """
-        if self.width == 0 or self.height == 0:
+        if self.__width == 0 or self.__height == 0:
             return ""
         rectangle_str = ""
-        for _ in range(self.height):
-            rectangle_str += '#' * self.width + "\n"
+        for _ in range(self.__height):
+            rectangle_str += '#' * self.__width + "\n"
         return rectangle_str
 
     def __repr__(self):
@@ -116,4 +116,4 @@ class Rectangle:
         Returns:
         str: A string representatuon with the dimesions
         """
-        return f"Rectangle(width={self.width}, height={self.height})"
+        return f"Rectangle(width={self.__width}, height={self.__height})"
