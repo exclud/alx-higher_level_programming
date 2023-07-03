@@ -116,4 +116,4 @@ class Rectangle:
         Returns:
         str: A string representatuon with the dimesions
         """
-        return f"Rectangle(width={self.__width}, height={self.__height})"
+        return f"Rectangle(width={self.width}, height={self.height},address={hex(id(self))})"
