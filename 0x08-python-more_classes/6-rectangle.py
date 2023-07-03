@@ -8,10 +8,8 @@ class Rectangle:
         width (int): Width of the rectangle
         height (int): The height o f the rectangle
     """
-    
-    
     number_of_instances = 0
-    
+
     def __init__(self, width=0, height=0):
         """
 
@@ -128,5 +126,5 @@ class Rectangle:
         Print the message when an instance of Rectangle is deleted
         Decrements the number_of_instances class attribute
         """
-        Rectangle.number_of_instances -=1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
