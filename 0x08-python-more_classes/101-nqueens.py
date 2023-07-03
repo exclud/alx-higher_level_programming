@@ -1,91 +1,121 @@
 #!/usr/bin/python3
+"""Solves the N-queens puzzle.
 
+Determines all possible solutions for placing N non-attacking queens on an NxN chessboard.
+
+Example:
+    $ ./nqueens.py N
+
+N must be an integer greater than or equal to 4.
+
+Attributes:
+    chessboard (list): A list of lists representing the chessboard.
+    solutions (list): A list of lists containing solutions.
+
+Solutions are represented in the format [[r, c], [r, c], [r, c], [r, c]]
+where `r` and `c` represent the row and column, respectively, where a queen must be placed on the chessboard.
+"""
 import sys
 
-def is_safe(board, row, col, N):
-    """
-    Check if it's safe to place a queen at the given position on the board.
+
+def initialize_chessboard(n):
+    """Create an empty chessboard with size N.
 
     Args:
-        board (list[list[int]]): The chessboard representation.
-        row (int): The row index.
-        col (int): The column index.
-        N (int): The size of the chessboard.
-
+        n (int): The size of the chessboard.
     Returns:
-        bool: True if it's safe to place a queen, False otherwise.
+        chessboard (list): A list of lists representing the chessboard.
     """
-    # Check if there is a queen in the current row on the left side
-    for i in range(col):
-        if board[row][i] == 1:
-            return False
+    chessboard = [[' '] * n for _ in range(n)]
+    return chessboard
 
-    # Check upper diagonal on the left side
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
 
-    # Check lower diagonal on the left side
-    for i, j in zip(range(row, N), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
-
-    return True
-
-def solve_nqueens_util(board, col, N, solutions):
-    """
-    Recursive utility function to solve the N queens problem.
+def get_solution_positions(chessboard):
+    """Get the positions of queens from the solved chessboard.
 
     Args:
-        board (list[list[int]]): The chessboard representation.
-        col (int): The current column index.
-        N (int): The size of the chessboard.
-        solutions (list[list[str]]): List to store the solutions.
-
+        chessboard (list): The solved chessboard.
     Returns:
-        None
+        solution (list): A list of lists containing the positions of queens.
     """
-    if col == N:
-        solution = [''.join('Q' if cell else '.' for cell in row) for row in board]
-        solutions.append(solution)
-        return
+    solution = []
+    for row in range(len(chessboard)):
+        for col in range(len(chessboard)):
+            if chessboard[row][col] == 'Q':
+                solution.append([row, col])
+    return solution
 
-    for i in range(N):
-        if is_safe(board, i, col, N):
-            board[i][col] = 1
-            solve_nqueens_util(board, col + 1, N, solutions)
-            board[i][col] = 0
 
-def solve_nqueens(N):
-    """
-    Solve the N queens problem and print the solutions.
+def mark_attacked_cells(chessboard, row, col):
+    """Mark the cells attacked by a queen on the chessboard.
 
     Args:
-        N (str): The size of the chessboard.
-
-    Returns:
-        None
+        chessboard (list): The current state of the chessboard.
+        row (int): The row where the queen is placed.
+        col (int): The column where the queen is placed.
     """
-    if not N.isdigit():
-        print("N must be a number")
-        sys.exit(1)
+    n = len(chessboard)
 
-    N = int(N)
-    if N < 4:
-        print("N must be at least 4")
-        sys.exit(1)
+    # Mark all cells in the same row
+    chessboard[row] = ['x'] * n
 
-    board = [[0 for _ in range(N)] for _ in range(N)]
+    # Mark all cells in the same column
+    for r in range(n):
+        chessboard[r][col] = 'x'
+
+    # Mark all cells in the diagonal lines
+    for i in range(n):
+        for j in range(n):
+            if (i + j == row + col) or (i - j == row - col):
+                chessboard[i][j] = 'x'
+
+
+def solve_n_queens(n):
+    """Solve the N-queens puzzle recursively.
+
+    Args:
+        n (int): The size of the chessboard and the number of queens.
+    Returns:
+        solutions (list): A list of lists containing solutions.
+    """
+    chessboard = initialize_chessboard(n)
     solutions = []
-    solve_nqueens_util(board, 0, N, solutions)
 
-    for solution in solutions:
-        print('\n'.join(solution))
-        print()
+    def recursive_solve(row, queens):
+        """Recursively solve the N-queens puzzle.
+
+        Args:
+            row (int): The current row being processed.
+            queens (int): The number of queens placed so far.
+        """
+        if queens == n:
+            solutions.append(get_solution_positions(chessboard))
+            return
+
+        for col in range(n):
+            if chessboard[row][col] == ' ':
+                tmp_chessboard = [row.copy() for row in chessboard]
+                tmp_chessboard[row][col] = 'Q'
+                mark_attacked_cells(tmp_chessboard, row, col)
+                recursive_solve(row + 1, queens + 1)
+
+    recursive_solve(0, 0)
+    return solutions
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
+    if not sys.argv[1].isdigit():
+        print("N must be a number")
+        sys.exit(1)
+    if int(sys.argv[1]) < 4:
+        print("N must be at least 4")
+        sys.exit(1)
 
-    solve_nqueens(sys.argv[1])
+    n = int(sys.argv[1])
+    solutions = solve_n_queens(n)
+
+    for solution in solutions:
+        print(solution)
