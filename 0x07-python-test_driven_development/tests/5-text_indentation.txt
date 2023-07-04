@@ -1,0 +1,20 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. How are you? I'm fine.")
+Hello
+How are you
+I'm fine
+>>> text_indentation("Python: A powerful programming language")
+Python
+A powerful programming language
+>>> text_indentation("This is a test... Can you answer it? Let's try: Yes!")
+This is a test
+Can you answer it
+Let's try
+Yes!
+>>> text_indentation("No punctuation marks in this text")
+No punctuation marks in this text
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
