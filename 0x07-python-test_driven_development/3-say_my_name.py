@@ -3,7 +3,7 @@
 
 def say_my_name(first_name, last_name=""):
     """
-    Print the full name in the format 
+    Print the full name in the format
 
     Args:
         first_name (str): The first name.
