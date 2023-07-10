@@ -1,19 +1,14 @@
 #!/usr/bin/python3
+"""An object defination which looks up a class"""
+
+
 def lookup(obj):
-    """A function that returns the list of available attributes and methods
+    """A function that returns the list of avail attributes and methods
 
     Args:
-        obj (int): the object
+        obj : The object to check
 
     Returns:
-        _type_: _description_
+        list: List containing attributes and methods
     """
-    attributes = []
-    methods = []
-    for attribute_name in dir(obj):
-        attribute = getattr(obj, attribute_name)
-        if callable(attribute):
-            methods.append(attribute_name)
-        else:
-            attributes.append(attribute_name)
-    return attributes + methods
+    return dir(obj)
