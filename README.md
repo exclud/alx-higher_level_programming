@@ -7,4 +7,5 @@ Folders :
 5. 0x04. Python - More Data Structures: Set, Dictionary
 6. 0x07. Python - Test-driven development
 7. 0x08. Python - More Classes and Objects
-8.  0x09. Python - Everything is object
+8. 0x09. Python - Everything is object
+9. 0x0A. Python - Inheritance
