@@ -1,0 +1,28 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+# Test cases for BaseGeometry
+
+# Create an instance of BaseGeometry
+>>> bg = BaseGeometry()
+>>> type(bg)
+    <class '7-base_geometry.BaseGeometry'>
+
+# Test area() method
+# This should raise an Exception with the message "area() is not implemented"
+geo.area()
+>>> bg = BaseGeometry()
+>>> print(bg.area) # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+<bound method BaseGeometry.area of <7-base_geometry.BaseGeometry 
+object at...>>
+
+
+# Test integer_validator() method
+# Valid integer value
+geo.integer_validator("width", 5)
+
+# Invalid integer value (not an integer)
+geo.integer_validator("height", 3.5)
+# Expected output: TypeError: height must be an integer
+
+# Invalid integer value (less than or equal to 0)
+geo.integer_validator("length", -2)
+# Expected output: ValueError: length must be greater than 0
