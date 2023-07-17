@@ -11,7 +11,7 @@ class Base:
         __init__(self, id=None): Initialize the object with unique id
     """
     __nb_objects = 0
-    
+
     def __init__(self, id=None):
         """Initialize the Base Class with a unique id
 
