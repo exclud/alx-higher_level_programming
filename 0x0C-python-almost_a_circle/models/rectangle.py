@@ -155,20 +155,35 @@ class Rectangle(Base):
     def __str__(self):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
     
-    def update(self, *args):
-        """Assign an argument to each attribute
+    def update(self, *args, **kwargs):
+        """Updates the attr of the rect
+        Args:
+            *args: Positional arguments.
+            **kwargs: The keyword arguments.
+            
         """
+        
         num_args = len(args)
-        if num_args >= 1:
+        if num_args > 0:
             self.id = args[0]
-        if num_args >= 2:
+        elif kwargs.get('id'):
+            self.id = kwargs['id']
+        if num_args > 1:
             self.width = args[1]
-        if num_args >= 3:
+        elif kwargs.get('width'):
+            self.width = kwargs['width']
+        if num_args > 2:
             self.height = args[2]
-        if num_args >= 4:
+        elif kwargs.get('height'):
+            self.height = kwargs['height']
+        if num_args > 3:
             self.x = args[3]
-        if num_args >= 5:
+        elif kwargs.get('x'):
+            self.x = kwargs['x']
+        if num_args > 4:
             self.y = args[4]
+        elif kwargs.get('y'):
+            self.y = kwargs['y']
 
 
 # if __name__ == '__main__':
