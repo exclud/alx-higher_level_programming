@@ -188,6 +188,20 @@ class Rectangle(Base):
         elif kwargs.get('y'):
             self.y = kwargs['y']
 
+    def to_dictionary(self):
+        """
+        Return the dictionary representation of the rectangle.
+
+        Returns:
+            dict: Dictionary representation of the rectangle.
+        """
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
 
 # if __name__ == '__main__':
 #     r = Rectangle(4, 6, 2, 2, 1)
