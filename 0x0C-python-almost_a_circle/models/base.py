@@ -53,3 +53,17 @@ class Base:
         json_string = cls.to_json_string(json_list)
         with open(filename, "w") as file:
             file.write(json_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Convert JSON to dictionary
+
+        Args:
+            json_string (str): JSON repr a list of dictionaries
+
+        Returns:
+            list: List of dictionaries rep by JSON string
+        """
+        if json_string is None or len(json_string) == 0:
+            return []
+        return json.loads(json_string)
