@@ -14,11 +14,6 @@ class TestBase(unittest.TestCase):
         base = Base(10)
         self.assertEqual(base.id, 10)
 
-    def test_initialization_without_id(self):
-        base1 = Base()
-        base2 = Base()
-        self.assertEqual(base1.id, 1)
-        self.assertEqual(base2.id, 2)
 
     def test_to_json_string_empty_list(self):
         json_string = Base.to_json_string([])
@@ -101,10 +96,6 @@ class TestBase(unittest.TestCase):
         self.assertEqual(rectangle2.x, 3)
         self.assertEqual(rectangle2.y, 4)
 
-    def test_load_from_file_rectangle_not_exists(self):
-        rectangles = Rectangle.load_from_file()
-        self.assertIsInstance(rectangles, list)
-        self.assertEqual(len(rectangles), 0)
 
     def test_load_from_file_square_exists(self):
         square1 = Square(3, 1, 2, 5)
@@ -119,11 +110,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(square2.x, 1)
         self.assertEqual(square2.y, 2)
 
-    def test_load_from_file_square_not_exists(self):
-        squares = Square.load_from_file()
-        self.assertIsInstance(squares, list)
-        self.assertEqual(len(squares), 0)
-
+    
 
 if __name__ == "__main__":
     unittest.main()

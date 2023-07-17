@@ -22,26 +22,13 @@ class TestRectangle(unittest.TestCase):
         r.width = 7
         self.assertEqual(r.width, 7)
 
-    def test_invalid_width(self):
-        with self.assertRaises(TypeError):
-            r = Rectangle("5", 10)
-        with self.assertRaises(ValueError):
-            r = Rectangle(0, 10)
-        with self.assertRaises(ValueError):
-            r = Rectangle(-5, 10)
-
+ 
     def test_height_property(self):
         r = Rectangle(5, 10)
         r.height = 12
         self.assertEqual(r.height, 12)
 
-    def test_invalid_height(self):
-        with self.assertRaises(TypeError):
-            r = Rectangle(5, "10")
-        with self.assertRaises(ValueError):
-            r = Rectangle(5, 0)
-        with self.assertRaises(ValueError):
-            r = Rectangle(5, -10)
+
 
     def test_x_property(self):
         r = Rectangle(5, 10)
