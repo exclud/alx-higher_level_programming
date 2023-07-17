@@ -8,9 +8,9 @@ class Rectangle(Base):
     """Rectangle which inherits from Base which is in the file base.py
 
     Args:
-        Base (): The Class Base 
+        Base (): The Class Base
     """
-    
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initializes the object rectangle and the dimensions
 
@@ -26,7 +26,7 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
-        
+
     @property
     def width(self):
         """
@@ -83,7 +83,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
-        
+
     @property
     def x(self):
         """Getter for x
@@ -109,7 +109,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("x must be >= 0")
         self.__x = value
-    
+
     @property
     def y(self):
         """Getter for y
@@ -118,7 +118,7 @@ class Rectangle(Base):
             int: y axis for rect
         """
         return self.__y
-    
+
     @y.setter
     def y(self, value):
         """Sets the y value
@@ -135,15 +135,15 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
-    
+
     def area(self):
         """Calculate and return area
 
         Returns:
             int: area of rectangle
         """
-        return self.width *self.height
-    
+        return self.width * self.height
+
     def display(self):
         """Visualize the rectangle
         """
@@ -151,18 +151,21 @@ class Rectangle(Base):
             print()
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
-    
+
     def __str__(self):
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
-    
+        """Return the print() and str() representation of the Rectangle."""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x, self.y,
+                                                       self.width, self.height)
+
     def update(self, *args, **kwargs):
         """Updates the attr of the rect
         Args:
             *args: Positional arguments.
             **kwargs: The keyword arguments.
-            
+
         """
-        
+
         num_args = len(args)
         if num_args > 0:
             self.id = args[0]
