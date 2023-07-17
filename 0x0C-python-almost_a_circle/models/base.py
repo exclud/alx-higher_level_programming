@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base model Class"""
 import json
+import csv
 
 
 class Base:
@@ -90,10 +91,10 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """Loads a list of instances from a file
+        """Loads a list of instances from a  CSVfile
 
         Returns:
-            list: List of instances
+            list: List of instances loaded from CSV file
         """
         filename = cls.__name__ + ".json"
         try:
@@ -101,6 +102,52 @@ class Base:
                 json_string = file.read()
                 json_list = cls.from_json_string(json_string)
                 instances = [cls.create(**obj_dict) for obj_dict in json_list]
+                return instances
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """serializes and saves to a csv file
+
+        Args:
+            list_objs (list): List of instances to be serialized and saved.
+
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            if list_objs is None or len(list_objs) == 0:
+                writer.writerow([])
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                elif cls.__name__ == "Square":
+                    fieldnames = ["id", "size", "x", "y"]
+                writer.writerow(fieldnames)
+                for obj in list_objs:
+                    writer.writerow(obj.to_csv_row())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Loads from a csv file
+
+        Returns:
+            _type_: _description_
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, mode="r", newline="") as file:
+                reader = csv.reader(file)
+                instances = []
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        id, width, height, x, y = map(int, row)
+                        instance = cls(width, height, x, y, id)
+                    elif cls.__name__ == "Square":
+                        id, size, x, y = map(int, row)
+                        instance = cls(size, x, y, id)
+                    instances.append(instance)
                 return instances
         except FileNotFoundError:
             return []
