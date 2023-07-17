@@ -28,47 +28,60 @@ class Rectangle(Base):
         self.y = y
         
     @property
-    def width(self, value):
-        """Getter for the width attribute
+    def width(self):
+        """
 
-        Args:
-            value (int): the value  of the width
-
-        Returns:
-            int: returns the width of the rectangle
+        Raises:
+            TypeError : If width !> integer
+            ValueError : If width < 0
         """
         return self.__width
-    
+
     @width.setter
     def width(self, value):
-        """Setter for width attribute
-        Args:
-            value (int): Width to set
-        Raises:
-            ValueError: If width val is not +ve int
         """
-        self.__validate_positive_int("width", value)
+        Sets the width of the rectangle
+
+        Args:
+            value (int): The width to set "value"
+
+        Raises:
+        TypeError: If value is ! integer.
+        ValueError: If value < 0
+        """
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be >= 0")
         self.__width = value
-        
+
     @property
     def height(self):
-        """Getter for the height attribute
+        """
+        int : The height of the rectangle
 
-        Returns:
-            int: height of rectangle
+        Raises:
+            TypeError: If height ! integer
+            ValueError: If height < 0
         """
         return self.__height
-    
+
     @height.setter
     def height(self, value):
-        """Setter for the height attribute
+        """
+        Sets height of rectangle
 
         Args:
-            value (int): Height to set
+            value (int): The value of the height to set
+
         Raises:
-        ValueError: If height is not positive
+            TypeError: If value ! integer
+            ValueError : If value < 0
         """
-        self.__validate_positive_int("height", value)
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
         self.__height = value
         
     @property
@@ -79,17 +92,22 @@ class Rectangle(Base):
             int: x axis for rect
         """
         return self.__x
-    
+
     @x.setter
     def x(self, value):
-        """Setter for the x attribute
+        """Sets the x value
 
         Args:
-            value (int): value of x
+            value (int): Value of the x value
+
         Raises:
-            ValueError : if x is not a +ve int
+            TypeError: if input is not an integer
+            ValueError: if value is less than 0
         """
-        self.__validate_positive_int("x", value)
+        if not isinstance(value, int):
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
         self.__x = value
     
     @property
@@ -103,28 +121,20 @@ class Rectangle(Base):
     
     @y.setter
     def y(self, value):
-        """Setter for the y attribute
+        """Sets the y value
 
         Args:
             value (int): value of y
+
         Raises:
-            ValueError : if y is not a +ve int
+            TypeError: if y is not an integer
+            ValueError: if y is less than 0
         """
-        self.__validate_positive_int("y", value)
+        if not isinstance(value, int):
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
-
-    def __validate_positive_int(self, attribute, value):
-        """Raises Value Error if int is not positive
-
-        Args:
-            attribute (str): name of attribute being validated e.g height
-            value (int): Value to validate
-
-        Raises:
-            ValueError: if the value is not a +ve int
-        """
-        if not isinstance(value, int) or value < 0:
-            raise ValueError(f"{attribute} must be a positive integer")
     
     def area(self):
         """Calculate and return area
