@@ -3,6 +3,7 @@
 import os
 import unittest
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestRectangle(unittest.TestCase):
