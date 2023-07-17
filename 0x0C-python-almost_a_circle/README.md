@@ -22,7 +22,7 @@ To run tests, run the following command
 ```bash
   python3 -m unittest discover tests
 ```
-
+This command will run all tests in the tests folder.
 Example using to test each single file
 ```bash
   python3 -m unittest tests/test_models/test_base.py
