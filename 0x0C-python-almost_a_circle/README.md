@@ -1,8 +1,6 @@
 
 # Python - Almost a Circle
 
-Getting Ready for the AirBnB project. 
-
 All Python files are executable and use the pycodestyle (version 2.8.*)
 
 Modules, Classses and Functions are also documented to explain their purpose. 
@@ -23,6 +21,7 @@ To run tests, run the following command
 ```
 This command will run all tests in the tests folder. 
 Example using to test each single file
+
 ```bash
   python3 -m unittest tests/test_models/test_base.py
 ```
