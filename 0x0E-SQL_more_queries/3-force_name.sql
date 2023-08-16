@@ -1,8 +1,5 @@
 -- This script creates the table force_name
 
--- Replace 'your_database_name' with the actual database name when running the script
-USE your_database_name;
-
 -- Create the table if it doesn't exist
 CREATE TABLE IF NOT EXISTS force_name (
     id INT,
