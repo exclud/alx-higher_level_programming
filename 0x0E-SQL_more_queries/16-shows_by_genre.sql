@@ -1,6 +1,6 @@
 -- This script lists shows and linked genres from the hbtn_0d_tvshows database
 
-USE hbtn_0d_tvshows;
+-- USE hbtn_0d_tvshows;
 
 -- List shows and linked genres
 SELECT CONCAT(tv_shows.title, ' - ', IFNULL(tv_genres.name, 'NULL')) AS show_genre
