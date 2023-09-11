@@ -1,3 +1,4 @@
+#!/usr/bin/node
 // Use 'const' for variables that won't be reassigned.
 const pi = 3.14159;
 const maxAttempts = 5;

@@ -1,1 +1,1 @@
-#!/usr/bin/node3
+#!/usr/bin/node
