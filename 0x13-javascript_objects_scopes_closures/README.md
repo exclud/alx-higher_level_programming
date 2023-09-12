@@ -1,5 +1,4 @@
-#!/usr/bin/node
-0x12. JavaScript - Warm up
+0x13-javascript_objects_scopes_closures
 
 ## Deployment
 
@@ -10,3 +9,4 @@ Here is the command to do so all at once. Make sure to be in the current working
   for file in *; do echo '#!/usr/bin/node' | cat - "$file" > temp && mv temp "$file"; done
 
 ```
+
