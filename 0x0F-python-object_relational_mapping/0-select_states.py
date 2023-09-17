@@ -5,6 +5,7 @@ Module for listing all states from the database hbtn_0e_0_usa
 import MySQLdb
 import sys
 
+
 def list_states():
     """
     Function to list all states from the database hbtn_0e_0_usa
