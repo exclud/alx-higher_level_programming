@@ -22,9 +22,9 @@ def find_peak(list_of_integers):
         mid = (low + high) // 2
         if list_of_integers[mid] > list_of_integers[mid + 1]:
             # If mid element is greater than its right neighbor, move left.
-            high = mid
+            low = mid + 1
         else:
             # Otherwise, move right.
-            low = mid + 1
+            high = mid
 
     return list_of_integers[low]
