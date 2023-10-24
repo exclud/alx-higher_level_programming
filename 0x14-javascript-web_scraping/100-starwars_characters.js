@@ -15,7 +15,7 @@ function fetchCharacterName (url) {
 }
 
 function fetchMovieCharacters (movieId) {
-  const url = `https://swapi.dev/api/films/${movieId}/`;
+  const url = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
 
   request(url, async (error, response, body) => {
     if (error) {

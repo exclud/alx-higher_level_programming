@@ -9,7 +9,7 @@ if (process.argv.length !== 3) {
 
 const movieId = process.argv[2];
 
-request(`https://swapi.dev/api/films/${movieId}/`, (error, response, body) => {
+request(`https://swapi-api.alx-tools.com/api/films/${movieId}/`, (error, response, body) => {
   if (error) {
     console.error('Error:', error);
     return;
